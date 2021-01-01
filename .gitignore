@@ -1,0 +1,9 @@
+# Text editor files
+*.swp
+
+# Build output dir
+build
+obj
+
+# websocketpp is pulled from another git repo
+include
