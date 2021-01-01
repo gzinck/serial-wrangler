@@ -7,7 +7,6 @@
 
 #include <string>
 #include <iostream>
-#include <json/value.h>
 #include "SerialIO.hpp"
 #include "Server.hpp"
 
@@ -17,25 +16,7 @@ void getData(std::string portPath, server::Server* server) {
 	serial::SerialIO io;
 	io.openPort(portPath.c_str(), 9600);
 	io.warmUp();
-
-	while (true) {
-		Json::Value val;
-		int i = 0;
-		std::string line = io.readLine();
-		std::string::size_type start = 0;
-		std::string::size_type end = line.find(' ');
-		while (end != std::string::npos) {
-			val["Force" + std::to_string(i++)] = line.substr(start, end - start);
-			start = end + 1;
-			end = line.find(' ', start);
-		}
-
-		if (start < line.length()) {
-			val["Force" + std::to_string(i++)] = line.substr(start);
-		}
-
-		*server << val;
-	}
+	while (true) *server << io.readLine();
 }
 
 int main(int argc, char* argv[]) {

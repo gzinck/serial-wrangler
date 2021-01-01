@@ -21,7 +21,7 @@ $(OUT_DIR)/SerialWrangler: $(OBJ_DIR)/SerialWrangler.o $(OBJ_DIR)/SerialIO.o $(O
 		$(CPP_FLAGS) \
 		-o $(OUT_DIR)/SerialWrangler
 
-$(OBJ_DIR)/SerialWrangler.o: SerialWrangler.cpp SerialIO.hpp Server.hpp | $(OBJ_DIR) $(INCLUDE_DIR)/websocketpp $(INCLUDE_DIR)/asio $(INCLUDE_DIR)/jsoncpp
+$(OBJ_DIR)/SerialWrangler.o: SerialWrangler.cpp SerialIO.hpp Server.hpp | $(OBJ_DIR) $(INCLUDE_DIR)/websocketpp $(INCLUDE_DIR)/asio
 	$(CC) SerialWrangler.cpp $(CPP_FLAGS) \
 		-c -o $(OBJ_DIR)/SerialWrangler.o
 
